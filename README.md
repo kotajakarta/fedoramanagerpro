@@ -159,3 +159,14 @@ This project uses a robust “installed packages” command in `commands.json`.
 ## 📄 License
 
 MIT
+
+
+## 📄 Agar bisa langsung pthon2 sm.py
+
+1. pastikan versi python
+    -> python3 -m pip --version
+    ---- hasilnya misal : pip 25.1.1 from /usr/lib/python3.14/site-packages/pip (python 3.14)
+    lanjut ke no 2
+2. jalankan perintah : python3 -m pip install --user customtkinter
+    -> python3 -c "import customtkinter as ctk; print('customtkinter', ctk.__version__)"
+3. sudah jadi, coba jalankan -> python3 sm.py
