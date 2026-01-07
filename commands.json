@@ -1,0 +1,72 @@
+{
+    "commands": [
+        {
+            "name": "WARP: Restart Service",
+            "command": "pkexec systemctl restart warp-svc"
+        },
+        {
+            "name": "WARP: Status",
+            "command": "warp-cli status"
+        },
+        {
+            "name": "WARP: Hubungkan",
+            "command": "warp-cli connect"
+        },
+        {
+            "name": "WARP: Putuskan",
+            "command": "warp-cli disconnect"
+        },
+        {
+            "name": "DNF: Full Upgrade System",
+            "command": "pkexec dnf upgrade -y --refresh"
+        },
+        {
+            "name": "DNF: Clean Unused Deps (Autoremove)",
+            "command": "pkexec dnf autoremove -y"
+        },
+        {
+            "name": "Flatpak: Update & Clean",
+            "command": "flatpak update -y && flatpak uninstall --unused -y"
+        },
+        {
+            "name": "System: Bersihkan Log Lama (100MB)",
+            "command": "pkexec journalctl --vacuum-size=100M"
+        },
+        {
+            "name": "System: Cek Booting Delay (Blame)",
+            "command": "systemd-analyze blame | head -n 15"
+        },
+        {
+            "name": "System: Cek Suhu & Hardware (Inxi)",
+            "command": "inxi -Fx"
+        },
+        {
+            "name": "System: Cek Disk Usage (df)",
+            "command": "df -h"
+        },
+        {
+            "name": "System: List Paket Terbesar (Top 20)",
+            "command": "rpm -qa --queryformat '%{size} %{name}\\n' | sort -rn | head -n 20 | awk '{print $1/1024/1024 \" MB\\t\" $2}'"
+        },
+        {
+            "name": "Security: Cek Error SELinux (AVC)",
+            "command": "pkexec ausearch -m avc -ts recent"
+        },
+        {
+            "name": "Security: Set SELinux Permissive (Fix Block)",
+            "command": "pkexec setenforce 0 && echo 'SELinux set to Permissive (Log only)'"
+        },
+        {
+            "name": "SSD: Optimize/Trim SSD",
+            "command": "pkexec fstrim -av"
+        },
+        {
+            "name": "Repair: Rebuild RPM & DNF Cache",
+            "command": "pkexec rpm --rebuilddb && pkexec dnf clean all && pkexec dnf makecache"
+        },
+        {
+            "name": "Repair: Fix DNF/RPM Lock",
+            "command": "pkexec rm -f /var/lib/rpm/.rpm.lock /var/lib/dnf/metadata_lock.pid"
+        }
+    ]
+}

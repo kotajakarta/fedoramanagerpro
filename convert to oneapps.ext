@@ -1,0 +1,14 @@
+pyinstaller --noconsole --onefile --add-data "commands.json:." sm.py
+
+
+
+[Desktop Entry]
+Name=Fedora Pro Manager
+Comment=Manage Fedora Services and DNF
+# Ganti path di bawah ini dengan lokasi file Anda
+Exec=python3 /mnt/BAA8721CA871D77B/Service-APP-GUI/sm.py
+# Ganti path di bawah ini jika ingin pakai icon custom (opsional)
+Icon=system-run
+Terminal=false
+Type=Application
+Categories=System;Utility;
