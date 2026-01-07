@@ -38,7 +38,7 @@
         },
         {
             "name": "System: Cek Suhu & Hardware (Inxi)",
-            "command": "inxi -Fx"
+            "command": "if command -v inxi >/dev/null; then inxi -Fx; else echo 'Install inxi: sudo dnf install inxi'; fi"
         },
         {
             "name": "System: Cek Disk Usage (df)",
@@ -69,4 +69,4 @@
             "command": "pkexec rm -f /var/lib/rpm/.rpm.lock /var/lib/dnf/metadata_lock.pid"
         }
     ]
-}
+} 
